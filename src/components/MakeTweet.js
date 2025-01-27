@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 
-const apiPath = 'http://localhost:8080/api'
+const apiPath = 'https://tweeter-backend-2166.onrender.com/api'; 
 
 export function MakeTweet({reloadTweets}) {
     const [tweetContent, setTweetContent] = useState("");

@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const apiPath = 'http://localhost:8080/api'
+const apiPath = 'https://tweeter-backend-2166.onrender.com/api'; 
 
 export function Register() {
     const [username, setUsername] = useState('');

@@ -5,7 +5,7 @@ import { VerticalNavbar } from '../components/NavBar';
 import { EditBio } from '../components/EditBio';
 import { useNavigate } from 'react-router-dom';
 
-const apiPath = 'http://localhost:8080/api'
+const apiPath = 'https://tweeter-backend-2166.onrender.com/api'; 
 
 export function UserPage() {
     const [userMetaData, setUserMetaData] = useState(null);

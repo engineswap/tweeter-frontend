@@ -4,7 +4,7 @@ import { TweetsScrollable } from '../components/TweetsScrollable';
 import { MakeTweet } from '../components/MakeTweet';
 import { useNavigate } from 'react-router-dom';
 
-const apiPath = 'http://localhost:8080/api'
+const apiPath = 'https://tweeter-backend-2166.onrender.com/api'; 
 
 export function Timeline() {
     const [tweets, setTweets] = useState([]);

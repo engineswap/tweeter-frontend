@@ -6,7 +6,7 @@ import { TweetsScrollable } from '../components/TweetsScrollable';
 import { UsersScrollable } from '../components/UsersScrollable';
 import { VerticalNavbar } from '../components/NavBar';
 
-const apiPath = 'http://localhost:8080/api'
+const apiPath = 'https://tweeter-backend-2166.onrender.com/api'; 
 
 export function Search() {
     // States: query, user/tweet selector, searchResult

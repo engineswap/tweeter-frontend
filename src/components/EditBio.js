@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5mb in bytes
 
-const apiPath = 'http://localhost:8080/api';
+const apiPath = 'https://tweeter-backend-2166.onrender.com/api'; 
 
 export function EditBio({ biography, fetchUserMetaData, fetchTweets }) {
     const [editBioModalOpen, setEditBioModalOpen] = useState(false);
@@ -75,23 +75,29 @@ export function EditBio({ biography, fetchUserMetaData, fetchTweets }) {
     const toggleModal = async () => {
         if (editBioModalOpen) {
             // Update bio
-            const response = await fetch(apiPath + '/users/updateBiography', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ 'biography': bioState })
-            })
-            if (response.ok) {
-                setEditBioModalOpen(!editBioModalOpen);
-                fetchUserMetaData(); // Reload bio
-                fetchTweets();
-            } else if (response.status == 403) {
-                // Login again
-                navigate('/login');
-            } else {
-                const errStr = `Error submitting form to backend: ${response.status}\n${response.statusText}`;
+            try {
+                const response = await fetch(apiPath + '/users/updateBiography', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ 'biography': bioState })
+                })
+                if (response.ok) {
+                    setEditBioModalOpen(!editBioModalOpen);
+                    fetchUserMetaData(); // Reload bio
+                    fetchTweets();
+                } else if (response.status == 403) {
+                    // Login again
+                    navigate('/login');
+                } else {
+                    const errStr = `Error submitting form to backend: ${response.status}\n${response.statusText}`;
+                    alert(errStr);
+                }
+            } catch (e) {
+                const errStr = `Error with updating bio: ${e.message}`;
+                console.error(errStr);
                 alert(errStr);
             }
 
